@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
-<title>computes discounts- chandugoud khammampati</title>
+<head>
+  <title>computes discounts- chandugoud khammampati</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
 <body>
   <h2>computes discounts- chandugoud khammampati</h2>
 
-  <form>
+  <form style="background-color:pink">
     <label for="form1_age">Enter base amount</label>
     <input type="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=10> <br>
 
     <label for="form1_nick">Enter the discount percentage</label>
     <input type="text" id="form1_nick" name="form1_nick" value=50 autofocus> <br>
 
-    <input type="button" onclick="discount()" value="Apply discount">
+    <input style="background-color:yellowgreen" type="button" onclick="discount()" value="Apply discount">
   </form>
 
 
-  <p id="result">This text will be replaced </p>
-  <form>
+  <p style="background-color:red" class="text-bg-primary p-3" id="result">This text will be replaced </p>
+  <form style="background-color:yellowgreen">
     <input onclick="chooseOp()" type="radio" id="rg1_red" name="color" value="times" checked>
     <label for="rg1_red">*</label></br>
 
@@ -27,9 +32,9 @@
     <input onclick="chooseOp()" type="radio" id="rg1_green" name="color" value="exponent">
     <label for="rg1_green">**</label></br>
 
-    <input type="button" onclick="chooseOp()" value="Get values from radio group">
+    <input style="background-color:pink"type="button" onclick="chooseOp()" value="Get values from radio group">
   </form>
-  <p id="output">This text will be replaced </p>
+  <p  style="background-color:purple"class="text-bg-primary p-3" id="output">This text will be replaced </p>
 
   <script>
     function chooseOp() {

@@ -2,33 +2,38 @@
 <html>
 
 <head>
-    <h1>Musician guess by-chandugoud khammampati</h1>
+    <h1 >Musician guess by-chandugoud khammampati</h1>
     <title>Musician guess by</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
     <h2>Getting input</h2>
-    <form>
+    <form style="background-color:skyblue">
         <label for="form_name">Enter the secret musician name</label>
-        <input type="password" id="form_name" name="form_name" min=10 max=50 step=2 value="John Lennon"> <br>
+        <input type="password" style="background-color:yellow"id="form_name" name="form_name" min=10 max=50 step=2 value="John Lennon"> <br>
         <br>
         <label for="form_nick">Guess the musician </label>
-        <input type="text" id="form_nick" name="form_nick" autofocus> <br>
+        <input type="text" style="background-color:yellow" id="form_nick" name="form_nick" autofocus> <br>
 
-        <input type="button" onclick="checkGuess()" value="Check the guess">
+        <input type="button" style="background-color:grey" onclick="checkGuess()" value="Check the guess">
     </form>
     <br>
     <div class="container">
         <img src="Honeybee.jpg" id="image" onclick="swapImage()" alt="Honeybee" style=" width:100px; height:100px;">
       </div>
 
-    <div id="result"></div>
+    <div  class="text-bg-primary p-3" id="result"></div>
 
     <script>
         correct = 0
         wrong = 0
         useimage=1
+        cor1=0
+        wor1=0
         function checkGuess() {
             console.log("Getting form values")
             age = document.getElementById("form_name").value
@@ -37,10 +42,20 @@
             out = document.getElementById("result")
             if (age == nick) {
                 correct = correct + 1
+                cor1=cor1+1
                 out.innerHTML = "correct - " + correct + "," + "wrong - " + wrong
                 alert("You got it right")
             } else {
                 wrong = wrong + 1
+                wor1=wor1+1
+                if(cor1==0 && wor1%3==0 && wor1!=0){
+                    alert("Sorry, Game over")
+                    return
+                }
+                else if(cor1>0){
+                     cor1=0
+                     wor1=0
+                }
                 out.innerHTML = "correct - " + correct + "," + "wrong - " + wrong
                 alert("Wrong Musician")
             }

@@ -3,50 +3,85 @@
 
 <head>
     <title> vacation html file </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <h2>selects a vacation- chandugoud khammampati</h2>
     <h2>Getting input</h2>
-    <form>
-        <label for="form1_age">Travel by Air</label>
-        <input type="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=True> <br>
-        <br>
-        <label for="form1_nick">Domestic</label>
-        <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
-        <br>
+    
+        <div class="container" style="background-color:skyblue">
+            <form>
+                <div class="form-group">
+                    <input type="checkbox" id="air" name="vacationtime" value="true">
+                    <label for="air">Travel by Air</label>
+                </div> <br>
+                <div class="form-group">
+                    <input type="checkbox" id="domestic" name="vacationtime" value="true">
+                    <label for="domestic">Domestic</label>
+                </div><br>
+                <div class="form-group">
+                    <input type="checkbox" id="resort" name="vacationtime" value="false">
+                    <label for="resort">Resort</label>
+                </div><br>
+                <div class="form-group">
+                    <input type="button" class="btn btn-warning" value="Select a vacation" onclick="selectVacation()">
+                </div>
+            </form>
+            <br>
+            <script>
+                var my_vacation = {};
+                function selectVacation() {
+                    my_vacation = {};
+                    let throughair = document.getElementById("air").checked
+                    let throughdomestic = document.getElementById("domestic").checked
+                    let throughresort = document.getElementById("resort").checked
+                    if (throughair) {
+                        my_vacation.air = true;
+                    }
+                    else {
+                        my_vacation.air = false;
+                    }
+                    if (throughdomestic) {
+                        my_vacation.domestic = true;
+                    }
+                    else {
+                        my_vacation.domestic = false;
+                    }
+                    if (throughresort) {
+                        my_vacation.resort = true;
+                    }
+                    else {
+                        my_vacation.resort = false;
+                    }
 
-        <label for="cb1_cheese">Resort</label></br>
-        <input type="checkbox" id="cb1_cheese" name="topping1" value=False checked>
 
-        <input type="button" onclick="selectVacation()" value="Select a vacation"><br>
-    </form>
-    <form>
-        <label for="city">Enter a city</label>
-        <input type="text" id="city" name="city" min=10 max=50 step=2 value="city"> <br>
-        <br>
-        <label for="price">Enter price</label>
-        <input type="text" id="price" name="price" min=10 max=50 step=2 value=True><br>
-        <br>
-        <input type="button" onclick=updateVacation() value="Update the vacation">
-    </form>
+                    document.getElementById("result").innerHTML = JSON.stringify(my_vacation)
+                }
+            </script>
+            <form>
+                <label for="city">Enter a city</label>
+                <input type="text" id="city" name="propertyname" value="city"> <br>
+                <br>
+                <label for="price">Enter price</label>
+                <input type="text" id="price" name="vacationprice">
+                <br>
+                <input type="button" class="btn btn-success" value="Update the vacation" onclick="updateVacation()">
+                <p  class="text-bg-primary p-3" id="result">A vacation is selected and also updated</p>
+            </form>
+            <script>
+                function updateVacation() {
+                    let city = document.getElementById("city").value;
+                    let price = document.getElementById("price").value;
+                    my_vacation["city"] = city;
+                    my_vacation["price"] = price;
 
-    <div id="result">The text will be replaced</div>
-    <script>
-        let my_vacation = " "
-        function selectVacation() {
-            console.log("Getting input")
-            air = document.getElementById("form1_age").checked
-            domestic = document.getElementById("form1_nick").checked
-            resort = document.getElementById("cb1_cheese").checked
-        }
-        function updateVacation() {
-            air = document.getElementById("city").checked
-            domestic = document.getElementById("price").checked
-            my_vacation = city
-        }
-    </script>
+                    document.getElementById("result").innerHTML = JSON.stringify(my_vacation)
+                }
 
+            </script>
 </body>
 
 </html>
